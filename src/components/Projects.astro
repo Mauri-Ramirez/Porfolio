@@ -1,0 +1,112 @@
+---
+import Html from "./icons/HtmlIcon.astro";
+import Css from "./icons/CSS.astro";
+import Vite from "./icons/Vite.astro";
+import React from "./icons/React.astro";
+import Javascript from "./icons/Javascript.astro";
+import LinkButton from "./LinkButton.astro";
+import GitHub from "./icons/Github.astro";
+import Link from "./icons/Link.astro"
+
+const TAGS = {
+  HTML: {
+    name: "HTML",
+    class: "bg-[#FC7400] text-white",
+    icon: Html,
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-[#42A5F5] text-white",
+    icon: Css,
+  },
+  VITE: {
+    name: "VITE",
+    class: "bg-[#BC79F4] text-white",
+    icon: Vite,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "bg-yellow-500 text-white",
+    icon: Javascript,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#23272F] text-white",
+    icon: React,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Gif-App",
+    description:
+      "Esta es una aplicación pequeña pero muy ilustrativa que explica cómo utilizar React + customHooks para poder resolver necesidades en específico que podremos re-utilizar después.",
+    link: "https://mauri-ramirez.github.io/Proyecto-react-gif-expert/",
+    gitHub: "https://github.com/Mauri-Ramirez/Proyecto-react-gif-expert",
+    image: "/images/Gifapp.webp",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.VITE, TAGS.REACT],
+  },
+  {
+    title: "Black-jack App",
+    description:
+        "Esta aplicación hace uso de arreglos para gestionar las cartas y su valor, permitiendo una experiencia de juego realista. La manipulación del DOM crea una interacción fluida.",
+    link:"https://mauri-ramirez.github.io/blackjack-js-vite/",
+    gitHub: "https://github.com/Mauri-Ramirez/blackjack-js-vite",    
+    image: "/images/capture-blackjack.webp",
+    tags: [TAGS.JAVASCRIPT, TAGS.VITE]
+  }
+];
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, link, gitHub }) => (
+    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+  <div class="w-full md:w-1/2">
+    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+      <img alt="Imagen Proyecto" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      {title}
+    </h3>
+    <div class="flex flex-wrap mt-2">
+      <ul class="flex flex-row mb-2 gap-x-2">
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+              >
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+      <footer class="flex items-end justify-start mt-4 gap-x-4">
+          {gitHub && (
+            <LinkButton href={gitHub}>
+              <GitHub class="size-6" />
+              Code
+              
+            </LinkButton>
+          )}
+          {link && (
+            <LinkButton href={link}>
+              <Link class="size-6" />
+              Preview
+            </LinkButton>
+          )}
+        </footer>
+    </div>
+  </div>
+</article>
+    ))
+  }
+</div>
+
+

@@ -1,0 +1,31 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    title: "Desarrolador de software",
+    company: "Meta",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eaque molestias laudantium unde alias minima! Dolorem nobis optio, beatae assumenda quidem possimus, quos obcaecati minus in natus labore non illum.",
+    link: "https://mauri.tv/mauri",
+  },
+  {
+    date: "Septiembre 2022",
+    title: "Principal Frontend Engineer",
+    company: "Google",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos est veritatis officia itaque at voluptatibus qui aperiam voluptatem molestias sed ab in, temporibus dolore ex et possimus distinctio labore iste.",
+  },
+];
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
